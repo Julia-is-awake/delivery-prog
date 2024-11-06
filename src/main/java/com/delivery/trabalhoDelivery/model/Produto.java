@@ -18,6 +18,10 @@ public class Produto {
     @Enumerated(EnumType.STRING)
     private Categoria categoria;
 
+    public Long getId() {
+        return id;
+    }
+
     public String getNome() {
         return nome;
     }
