@@ -1,7 +1,9 @@
 package com.delivery.trabalhoDelivery.controller;
 
 import com.delivery.trabalhoDelivery.model.Produto;
+import com.delivery.trabalhoDelivery.model.Restaurante;
 import com.delivery.trabalhoDelivery.repositories.ProdutoRepositorio;
+import com.delivery.trabalhoDelivery.repositories.RestauranteRepositorio;
 import jakarta.websocket.server.PathParam;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +19,13 @@ public class ProdutoController {
     @Autowired
     ProdutoRepositorio repositorio;
 
-    @PostMapping("/cadastrar")
-    public Produto cadastrar(@RequestBody Produto produto){
+    @Autowired
+    RestauranteRepositorio restauranteRepositorio;
+
+    @PostMapping("/cadastrar/{restaurante_id}")
+    public Produto cadastrar(@RequestBody Produto produto, @PathVariable(value = "restaurante_id") Long restaurante_id){
+        Optional<Restaurante> restaurante = restauranteRepositorio.findById(restaurante_id);
+        produto.setRestaurante(restaurante.get());
         return this.repositorio.save(produto);
     }
 
