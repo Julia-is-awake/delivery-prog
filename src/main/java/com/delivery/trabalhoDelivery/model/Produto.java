@@ -32,7 +32,7 @@ public class Produto {
     @Column(name = "imagem")
     private String imagem;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "restaurante_id")
     private Restaurante restaurante;
 

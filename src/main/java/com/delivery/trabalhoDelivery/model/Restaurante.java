@@ -23,7 +23,7 @@ public class Restaurante {
     @Column(name = "descricao")
     private String descricao;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurante", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurante", cascade = CascadeType.ALL) 
     private List<Produto> produtos;
 
     public Long getId() {
