@@ -18,6 +18,9 @@ public class User {
     @Column(name = "saldo")
     private double saldo;
 
+    @Column(name = "imagem")
+    private String imagem;
+
     public Long getId() {
         return id;
     }
@@ -44,5 +47,13 @@ public class User {
 
     public void setSaldo(double saldo) {
         this.saldo = saldo;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 }
